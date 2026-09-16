@@ -128,7 +128,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
         'Accessible, responsive and motion-safe',
       ],
       stack: ['Angular', 'TypeScript', 'SCSS'],
-      githubUrl: 'https://github.com/Dheeraj25km',
+      githubUrl: 'https://github.com/Dheeraj25km/portfolio',
       featured: true,
       year: '2026',
       icon: 'layout',
