@@ -1,0 +1,125 @@
+<section id="contact" class="section contact" appSpySection>
+  <div class="container contact__inner">
+    <div class="contact__info" appReveal>
+      <p class="eyebrow">05 — Contact</p>
+      <h2 class="section-title">
+        Let's build something <span class="gradient-text">together.</span>
+      </h2>
+      <p class="section-lead">
+        Have a role, a project, or an idea in mind? My inbox is open — I usually reply within a day.
+      </p>
+
+      <div class="contact__card card">
+        <img class="contact__avatar" [src]="data.profile.src" [alt]="data.profile.alt" width="64" height="64" loading="lazy" />
+        <div>
+          <span class="contact__card-name">{{ data.name }}</span>
+          <span class="pill-live contact__card-status">
+            <span class="pill-live__dot"></span> {{ data.availability }}
+          </span>
+        </div>
+      </div>
+
+      <ul class="contact__list">
+        <li>
+          <app-icon name="mail" [size]="17" />
+          <a [href]="'mailto:' + data.email">{{ data.email }}</a>
+          <button type="button" class="contact__copy" (click)="copyEmail()" aria-label="Copy email address">
+            <app-icon [name]="copied() ? 'check' : 'copy'" [size]="14" />
+            {{ copied() ? 'Copied' : 'Copy' }}
+          </button>
+        </li>
+        <li>
+          <app-icon name="phone" [size]="17" />
+          <a [href]="'tel:' + data.phone">{{ data.phone }}</a>
+        </li>
+        <li>
+          <app-icon name="map-pin" [size]="17" />
+          <span>{{ data.location }}</span>
+        </li>
+      </ul>
+
+      <div class="contact__socials">
+        @for (social of data.socials; track social.label) {
+          <a [href]="social.url" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <app-icon [name]="social.icon" [size]="16" /> {{ social.label }}
+          </a>
+        }
+      </div>
+    </div>
+
+    <form
+      class="contact__form card"
+      [formGroup]="form"
+      (ngSubmit)="submit()"
+      appReveal
+      [revealDelay]="130"
+      novalidate
+    >
+      <h3 class="contact__form-title">Send a message</h3>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Your name"
+          autocomplete="name"
+          [class.is-invalid]="name.invalid && name.touched"
+        />
+        @if (name.invalid && name.touched) {
+          <span class="field__error">Please enter your name (min. 2 characters).</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          [class.is-invalid]="email.invalid && email.touched"
+        />
+        @if (email.invalid && email.touched) {
+          <span class="field__error">Please enter a valid email address.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          rows="5"
+          formControlName="message"
+          placeholder="Tell me a bit about the opportunity or project..."
+          [class.is-invalid]="message.invalid && message.touched"
+        ></textarea>
+        @if (message.invalid && message.touched) {
+          <span class="field__error">Message should be at least 10 characters.</span>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primary contact__submit" [disabled]="state() === 'sending'">
+  <app-icon name="send" [size]="16" />
+  {{ state() === 'sending' ? 'Sending…' : 'Send message' }}
+</button>
+
+@if (state() === 'sent') {
+  <p class="contact__success">
+    <app-icon name="check" [size]="14" /> Message sent successfully! I'll get back to you soon.
+  </p>
+}
+
+@if (state() === 'error') {
+  <p class="contact__error">
+    Something went wrong. Please email me directly at
+    <a [href]="'mailto:' + data.email">{{ data.email }}</a>.
+  </p>
+}
+
+<p class="contact__note">Your message has been sent securely. I’ll get back to you as soon as possible.</p>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,103 @@
+// ---------------------------------------------------------------------------
+// Design tokens
+// Palette: deep ink navy + electric indigo/cyan — a code-editor mood without
+// leaning on cliche "matrix green" or the generic warm-cream/terracotta look.
+//
+// Everything visual (colour, elevation, motion, layout rhythm) is expressed as
+// a CSS custom property so themes swap at runtime with zero JS style writes.
+// ---------------------------------------------------------------------------
+
+:root {
+  // Type
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  // Radii
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  // Motion
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 180ms;
+  --dur-med: 380ms;
+  --dur-slow: 700ms;
+
+  // Layout
+  --container-w: 1180px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --nav-h: 72px;
+
+  // Accent ramp (shared across themes)
+  --accent: #6c63ff;
+  --accent-2: #22d3ee;
+  --accent-3: #34d399;
+  --accent-rgb: 108, 99, 255;
+  --accent-2-rgb: 34, 211, 238;
+  --accent-3-rgb: 52, 211, 153;
+
+  // Signature gradients
+  --grad-brand: linear-gradient(120deg, #6c63ff 0%, #8b7cff 38%, #22d3ee 100%);
+  --grad-brand-soft: linear-gradient(120deg, rgba(108, 99, 255, 0.18), rgba(34, 211, 238, 0.14));
+  --grad-line: linear-gradient(90deg, transparent, rgba(108, 99, 255, 0.55), transparent);
+}
+
+// ---------------------------------------------------------------------------
+// Dark theme (default)
+// ---------------------------------------------------------------------------
+:root,
+[data-theme='dark'] {
+  --bg: #070912;
+  --bg-elevated: #0d1121;
+  --surface: rgba(21, 27, 48, 0.72);
+  --surface-solid: #131a2e;
+  --surface-hover: rgba(30, 39, 70, 0.85);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --border-soft: rgba(255, 255, 255, 0.05);
+
+  --text-primary: #eef0f8;
+  --text-secondary: #9aa3be;
+  --text-muted: #6b7392;
+
+  --shadow-sm: 0 2px 10px -4px rgba(0, 0, 0, 0.7);
+  --shadow-soft: 0 24px 70px -28px rgba(0, 0, 0, 0.85);
+  --shadow-lift: 0 34px 90px -34px rgba(0, 0, 0, 0.9);
+  --shadow-glow: 0 0 0 1px rgba(108, 99, 255, 0.28), 0 26px 60px -22px rgba(108, 99, 255, 0.45);
+
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --glass-blur: 16px;
+  --sheen: rgba(255, 255, 255, 0.07);
+}
+
+// ---------------------------------------------------------------------------
+// Light theme
+// ---------------------------------------------------------------------------
+[data-theme='light'] {
+  --bg: #f6f7fc;
+  --bg-elevated: #ffffff;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-solid: #ffffff;
+  --surface-hover: rgba(255, 255, 255, 0.96);
+  --border: rgba(18, 22, 42, 0.1);
+  --border-strong: rgba(18, 22, 42, 0.18);
+  --border-soft: rgba(18, 22, 42, 0.06);
+
+  --text-primary: #10142a;
+  --text-secondary: #4b5273;
+  --text-muted: #7b8199;
+
+  --shadow-sm: 0 2px 8px -4px rgba(20, 24, 50, 0.2);
+  --shadow-soft: 0 24px 60px -30px rgba(20, 24, 50, 0.35);
+  --shadow-lift: 0 34px 80px -34px rgba(20, 24, 50, 0.4);
+  --shadow-glow: 0 0 0 1px rgba(108, 99, 255, 0.2), 0 26px 55px -24px rgba(108, 99, 255, 0.32);
+
+  --grid-line: rgba(15, 20, 40, 0.045);
+  --glass-blur: 14px;
+  --sheen: rgba(255, 255, 255, 0.8);
+}

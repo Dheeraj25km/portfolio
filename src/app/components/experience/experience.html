@@ -1,0 +1,54 @@
+<section id="experience" class="section experience" appSpySection>
+  <div class="container">
+    <div class="section-head" appReveal>
+      <p class="eyebrow">02 — Experience</p>
+      <h2 class="section-title">Where I've <span class="gradient-text">worked</span></h2>
+      <p class="section-lead">
+        A reverse-chronological look at the teams I've built with and the problems I've owned.
+      </p>
+    </div>
+
+    <ol class="timeline">
+      @for (job of data.experience; track job.company; let i = $index) {
+        <li class="timeline__item" appReveal [revealDelay]="i * 120">
+          <div class="timeline__marker" aria-hidden="true">
+            <span class="timeline__dot" [class.is-current]="job.current"></span>
+          </div>
+
+          <div class="timeline__content card card--edge-lit" appSpotlight>
+            <div class="timeline__head">
+              <div>
+                <h3 class="timeline__role">{{ job.role }}</h3>
+                <p class="timeline__company">{{ job.company }}</p>
+              </div>
+              @if (job.current) {
+                <span class="pill-live timeline__badge">
+                  <span class="pill-live__dot"></span> Current
+                </span>
+              }
+            </div>
+
+            <div class="timeline__meta">
+              <span><app-icon name="calendar" [size]="14" /> {{ job.duration }}</span>
+              <span><app-icon name="map-pin" [size]="14" /> {{ job.location }}</span>
+            </div>
+
+            <p class="timeline__summary">{{ job.summary }}</p>
+
+            <ul class="timeline__highlights">
+              @for (point of job.highlights; track point) {
+                <li><app-icon name="check" [size]="14" /><span>{{ point }}</span></li>
+              }
+            </ul>
+
+            <div class="timeline__stack">
+              @for (tech of job.stack; track tech) {
+                <span class="tag">{{ tech }}</span>
+              }
+            </div>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

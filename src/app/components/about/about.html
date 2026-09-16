@@ -1,0 +1,75 @@
+<section id="about" class="section about" appSpySection>
+  <div class="container">
+    <div class="about__inner">
+      <div class="about__copy" appReveal>
+        <p class="eyebrow">01 — About</p>
+        <h2 class="section-title">
+          A developer who cares about<br />
+          <span class="gradient-text">the details.</span>
+        </h2>
+        <p class="section-lead about__summary">{{ data.summary }}</p>
+
+        <div class="about__facts">
+          <div class="about__fact">
+            <span class="about__fact-icon"><app-icon name="briefcase" [size]="16" /></span>
+            <div>
+              <span class="about__fact-label">Currently</span>
+              <span class="about__fact-value">
+                {{ data.experience[0].role }} @ {{ data.experience[0].company }}
+              </span>
+            </div>
+          </div>
+          <div class="about__fact">
+            <span class="about__fact-icon"><app-icon name="graduation" [size]="16" /></span>
+            <div>
+              <span class="about__fact-label">Education</span>
+              <span class="about__fact-value">
+                {{ data.education[0].degree }} · {{ data.education[0].detail }}
+              </span>
+            </div>
+          </div>
+          <div class="about__fact">
+            <span class="about__fact-icon"><app-icon name="map-pin" [size]="16" /></span>
+            <div>
+              <span class="about__fact-label">Based in</span>
+              <span class="about__fact-value">{{ data.location }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__certs">
+          <span class="about__certs-label"><app-icon name="award" [size]="14" /> Certifications</span>
+          <div class="about__certs-list">
+            @for (cert of data.certifications; track cert) {
+              <span class="tag"><app-icon name="check" [size]="12" /> {{ cert }}</span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Live-typed code panel ----------------------------------------- -->
+      <div class="about__panel" appReveal [revealDelay]="140">
+        <div class="editor card" appSpotlight>
+          <div class="editor__bar">
+            <span class="editor__dot editor__dot--red"></span>
+            <span class="editor__dot editor__dot--yellow"></span>
+            <span class="editor__dot editor__dot--green"></span>
+            <span class="editor__filename">developer.ts</span>
+          </div>
+          <pre class="editor__body"><code>{{ typedText() }}<span class="editor__cursor"></span></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- How I work ------------------------------------------------------ -->
+    <div class="about__principles">
+      @for (p of data.principles; track p.title; let i = $index) {
+        <article class="principle card" appReveal [revealDelay]="i * 90" appSpotlight>
+          <span class="principle__icon"><app-icon [name]="p.icon" [size]="18" /></span>
+          <h3 class="principle__title">{{ p.title }}</h3>
+          <p class="principle__detail">{{ p.detail }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

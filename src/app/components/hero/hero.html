@@ -1,0 +1,105 @@
+<section id="home" class="hero" appSpySection>
+  <div class="hero__aurora" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__copy" appReveal>
+      <span class="pill-live hero__status">
+        <span class="pill-live__dot"></span> {{ data.availability }}
+      </span>
+
+      <p class="hero__greeting">Hi, I'm {{ firstName }} —</p>
+
+      <h1 class="hero__title">
+        {{ data.headline.lead }}
+        <span class="gradient-text">{{ data.headline.accent }}</span>
+        {{ data.headline.trail }}
+      </h1>
+
+      <p class="hero__tagline">{{ data.tagline }}</p>
+
+      <div class="hero__cta">
+        <a href="projects" class="btn btn-primary" (click)="scrollTo('projects', $event)">
+  View my work <app-icon name="arrow-right" [size]="16" />
+</a>
+        <a class="btn btn-ghost" [href]="data.resumeUrl" download>
+          <app-icon name="download" [size]="16" /> Download résumé
+        </a>
+      </div>
+
+      <div class="hero__socials">
+        @for (social of data.socials; track social.label) {
+          <a
+            [href]="social.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hero__social"
+            [attr.aria-label]="social.label"
+          >
+            <app-icon [name]="social.icon" [size]="18" />
+          </a>
+        }
+        <span class="hero__social-note">
+          <app-icon name="map-pin" [size]="14" /> {{ data.location }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Profile image -------------------------------------------------- -->
+    <div class="hero__profile" appReveal [revealDelay]="140">
+      <figure class="profile" appTilt [tiltMax]="7">
+        <div class="profile__ring" aria-hidden="true"></div>
+        <div class="profile__frame">
+          <img
+            class="profile__img"
+            [src]="data.profile.src"
+            [alt]="data.profile.alt"
+            width="800"
+            height="800"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="profile__shine" aria-hidden="true"></div>
+        </div>
+
+        <figcaption class="profile__plate">
+          <span class="profile__name">{{ data.name }}</span>
+          <span class="profile__role">{{ data.role }}</span>
+        </figcaption>
+
+        <span class="profile__chip profile__chip--a">
+          <app-icon name="code" [size]="14" /> Angular · .NET
+        </span>
+        <span class="profile__chip profile__chip--b">
+          <app-icon name="sparkle" [size]="14" /> 400+ DSA problems
+        </span>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Stats ------------------------------------------------------------- -->
+  <div class="container">
+    <div class="hero__stats" appReveal [revealDelay]="220">
+      @for (stat of data.stats; track stat.label) {
+        <div class="hero__stat">
+          <span class="hero__stat-value" [appCountUp]="stat.value"></span>
+          <span class="hero__stat-label">{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Tech ticker -------------------------------------------------------- -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      @for (item of marqueeLoop; track $index) {
+        <span class="marquee__item">{{ item }}</span>
+        <span class="marquee__sep">◆</span>
+      }
+    </div>
+  </div>
+
+  <a href="about" class="hero__scroll" aria-label="Scroll to the About section" (click)="scrollTo('about', $event)">
+    <span class="hero__scroll-line"></span>
+    <app-icon name="arrow-down" [size]="14" />
+  </a>
+</section>

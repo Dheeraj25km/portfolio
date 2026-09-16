@@ -1,0 +1,33 @@
+<section id="skills" class="section skills" appSpySection>
+  <div class="container">
+    <div class="section-head" appReveal>
+      <p class="eyebrow">04 — Skills</p>
+      <h2 class="section-title">Tools of the <span class="gradient-text">trade</span></h2>
+      <p class="section-lead">
+        The technologies and fundamentals I reach for most often when shipping production software.
+      </p>
+    </div>
+
+    <div class="skills__grid">
+      @for (group of data.skills; track group.label; let i = $index) {
+        <div class="skill card" appReveal [revealDelay]="i * 90" appSpotlight>
+          <div class="skill__head">
+            <span class="skill__icon"><app-icon [name]="group.icon" [size]="18" /></span>
+            <div>
+              <h3 class="skill__title">{{ group.label }}</h3>
+              <span class="skill__count">{{ group.items.length }} technologies</span>
+            </div>
+          </div>
+
+          <p class="skill__blurb">{{ group.blurb }}</p>
+
+          <div class="skill__items">
+            @for (item of group.items; track item) {
+              <span class="tag">{{ item }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

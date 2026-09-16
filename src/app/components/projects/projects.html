@@ -1,0 +1,81 @@
+<section id="projects" class="section projects" appSpySection>
+  <div class="container">
+    <div class="projects__head" appReveal>
+      <div class="section-head">
+        <p class="eyebrow">03 — Projects</p>
+        <h2 class="section-title">Things I've <span class="gradient-text">built</span></h2>
+        <p class="section-lead">
+          Full-stack and frontend work, from data-driven APIs to component-based UIs — each one
+          shipped end to end.
+        </p>
+      </div>
+      <a
+        [href]="data.socials[0].url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-ghost projects__all"
+      >
+        <app-icon name="github" [size]="16" /> All repositories
+      </a>
+    </div>
+
+    <div class="projects__grid">
+      @for (project of data.projects; track project.name; let i = $index) {
+        <article
+          class="project card"
+          [class.project--featured]="project.featured"
+          appReveal
+          [revealDelay]="i * 110"
+          appSpotlight
+        >
+          <div class="project__top">
+            <span class="project__icon"><app-icon [name]="project.icon" [size]="20" /></span>
+            <div class="project__top-meta">
+              <span class="project__year">{{ project.year }}</span>
+              @if (project.featured) {
+                <span class="project__badge">Featured</span>
+              }
+            </div>
+          </div>
+
+          <h3 class="project__name">{{ project.name }}</h3>
+          <p class="project__tagline">{{ project.tagline }}</p>
+          <p class="project__desc">{{ project.description }}</p>
+
+          <ul class="project__outcomes">
+            @for (outcome of project.outcomes; track outcome) {
+              <li><app-icon name="check" [size]="13" /><span>{{ outcome }}</span></li>
+            }
+          </ul>
+
+          <div class="project__stack">
+            @for (tech of project.stack; track tech) {
+              <span class="tag">{{ tech }}</span>
+            }
+          </div>
+
+          <div class="project__links">
+            <a
+              [href]="project.githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project__link"
+            >
+              <app-icon name="github" [size]="16" /> Source code
+            </a>
+            @if (project.liveUrl) {
+              <a
+                [href]="project.liveUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project__link project__link--accent"
+              >
+                <app-icon name="external" [size]="16" /> Live demo
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

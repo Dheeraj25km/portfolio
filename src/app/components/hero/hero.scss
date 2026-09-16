@@ -1,0 +1,407 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--nav-h) + clamp(2rem, 6vw, 4rem));
+  padding-bottom: 0;
+  overflow: hidden;
+  scroll-margin-top: 0;
+}
+
+// Slow-drifting colour wash unique to the hero, layered over the page aurora.
+.hero__aurora {
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 120%;
+  pointer-events: none;
+  background:
+    radial-gradient(38rem 26rem at 22% 28%, rgba(var(--accent-rgb), 0.28), transparent 62%),
+    radial-gradient(34rem 24rem at 78% 20%, rgba(var(--accent-2-rgb), 0.2), transparent 64%);
+  filter: blur(10px);
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+}
+
+.hero__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 6vw, 4.5rem);
+  align-items: center;
+}
+
+// --- Copy -------------------------------------------------------------
+.hero__status {
+  margin-bottom: 1.4rem;
+}
+
+.hero__greeting {
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+
+.hero__title {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.hero__tagline {
+  margin-top: 1.3rem;
+  max-width: 54ch;
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2.1rem;
+}
+
+.hero__socials {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2.1rem;
+}
+
+.hero__social {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  backdrop-filter: blur(var(--glass-blur));
+  transition: transform var(--dur-fast) var(--ease-spring), color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-med) var(--ease-out);
+
+  &:hover {
+    transform: translateY(-3px);
+    color: var(--accent);
+    border-color: rgba(var(--accent-rgb), 0.55);
+    box-shadow: 0 12px 26px -14px rgba(var(--accent-rgb), 0.8);
+  }
+}
+
+.hero__social-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+// --- Profile portrait --------------------------------------------------
+.hero__profile {
+  display: flex;
+  justify-content: center;
+}
+
+.profile {
+  position: relative;
+  margin: 0;
+  width: min(100%, 360px);
+  aspect-ratio: 1;
+  will-change: transform;
+}
+
+// Conic gradient ring that slowly rotates behind the frame.
+.profile__ring {
+  position: absolute;
+  inset: -14px;
+  border-radius: var(--radius-xl);
+  background: conic-gradient(
+    from 0deg,
+    rgba(var(--accent-rgb), 0.9),
+    rgba(var(--accent-2-rgb), 0.9),
+    rgba(var(--accent-3-rgb), 0.7),
+    rgba(var(--accent-rgb), 0.9)
+  );
+  filter: blur(18px);
+  opacity: 0.55;
+  animation: ring-spin 12s linear infinite;
+}
+
+@keyframes ring-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.profile__frame {
+  position: relative;
+  height: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-lift);
+  background: var(--bg-elevated);
+}
+
+.profile__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease-out), filter var(--dur-slow) var(--ease-out);
+}
+
+.profile:hover .profile__img {
+  transform: scale(1.04);
+}
+
+// Diagonal light sweep across the glass.
+.profile__shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 45%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.profile__plate {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%) translateZ(40px);
+  display: grid;
+  gap: 0.1rem;
+  width: max-content;
+  max-width: 88%;
+  padding: 0.6rem 1.1rem;
+  text-align: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: rgba(10, 13, 25, 0.62);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-soft);
+}
+
+.profile__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: #fff;
+}
+
+.profile__role {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-2);
+}
+
+.profile__chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-primary);
+  background: var(--surface-hover);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--shadow-sm);
+  transform: translateZ(60px);
+  animation: float-chip 6s ease-in-out infinite;
+}
+
+.profile__chip--a {
+  top: 8%;
+  left: -12%;
+}
+
+.profile__chip--b {
+  bottom: 22%;
+  right: -10%;
+  animation-delay: -3s;
+}
+
+@keyframes float-chip {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+// --- Stats -------------------------------------------------------------
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--border-soft);
+  overflow: hidden;
+  backdrop-filter: blur(var(--glass-blur));
+}
+
+.hero__stat {
+  padding: 1.35rem 1.2rem;
+  background: var(--surface);
+  transition: background-color var(--dur-med) var(--ease-out);
+
+  &:hover {
+    background: var(--surface-hover);
+  }
+}
+
+.hero__stat-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1;
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__stat-label {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+// --- Marquee -----------------------------------------------------------
+.marquee {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding-block: 0.9rem;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  width: max-content;
+  animation: marquee-scroll 38s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__item {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.marquee__item:hover {
+  color: var(--accent);
+}
+
+.marquee__sep {
+  font-size: 0.5rem;
+  color: rgba(var(--accent-rgb), 0.6);
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+// --- Scroll cue --------------------------------------------------------
+.hero__scroll {
+  position: absolute;
+  bottom: 1.1rem;
+  left: 50%;
+  translate: -50% 0;
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-out);
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 34px;
+  background: linear-gradient(var(--accent), transparent);
+  animation: scroll-cue 2s var(--ease-out) infinite;
+}
+
+@keyframes scroll-cue {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scaleY(0.5);
+    transform-origin: top;
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+// --- Responsive --------------------------------------------------------
+@media (max-width: 980px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .hero__profile {
+    order: -1;
+  }
+  .profile {
+    width: min(78vw, 300px);
+  }
+  .hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    min-height: auto;
+    padding-bottom: 2rem;
+  }
+  .profile__chip--a {
+    left: -4%;
+  }
+  .profile__chip--b {
+    right: -2%;
+  }
+  .hero__cta .btn {
+    flex: 1 1 100%;
+  }
+}

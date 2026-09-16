@@ -1,0 +1,39 @@
+<section id="education" class="section education" appSpySection>
+  <div class="container">
+    <div class="section-head" appReveal>
+      <p class="eyebrow">03 — Education</p>
+      <h2 class="section-title">Academic <span class="gradient-text">background</span></h2>
+      <p class="section-lead">
+        <!-- The formal foundation behind the code — degree, and the school exams before it. -->
+      </p>
+    </div>
+
+    <ol class="edu-list">
+      @for (item of data.education; track item.degree; let i = $index) {
+        <li class="edu-item" appReveal [revealDelay]="i * 100">
+          <div class="edu-item__marker" aria-hidden="true">
+            <span class="edu-item__dot"></span>
+          </div>
+
+          <div class="edu-item__content card card--edge-lit" appSpotlight>
+            <span class="edu-item__icon"><app-icon name="graduation" [size]="18" /></span>
+
+            <div class="edu-item__body">
+              <h3 class="edu-item__degree">{{ item.degree }}</h3>
+              <p class="edu-item__institution">{{ item.institution }}</p>
+
+              <div class="edu-item__meta">
+                @if (item.duration) {
+                  <span><app-icon name="calendar" [size]="13" /> {{ item.duration }}</span>
+                }
+                <span class="edu-item__score">
+                  <app-icon name="award" [size]="13" /> {{ item.detail }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+<header class="nav" [class.nav--scrolled]="scrolled()">
+  <div class="nav__inner container">
+    <a href="home" class="nav__brand" (click)="scrollTo('home', $event); closeMenu()">
+      <span class="nav__brand-avatar">
+        <img [src]="data.profile.src" [alt]="data.profile.alt" width="36" height="36" />
+      </span>
+      <span class="nav__brand-copy">
+        <span class="nav__brand-name">{{ data.name }}</span>
+        <span class="nav__brand-role">{{ data.role }}</span>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      @for (link of links; track link.id) {
+        <a
+           [href]="link.id"
+  class="nav__link"
+  [class.is-active]="spy.activeId() === link.id"
+  (click)="scrollTo(link.id, $event)"
+>{{ link.label }}</a>
+      }
+    </nav>
+
+    <div class="nav__actions">
+      <button
+        type="button"
+        class="nav__icon-btn"
+        (click)="theme.toggle()"
+        [attr.aria-label]="theme.theme() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+      >
+        <app-icon [name]="theme.theme() === 'dark' ? 'sun' : 'moon'" [size]="18" />
+      </button>
+
+      <a class="btn btn-ghost nav__resume" [href]="data.resumeUrl" download>
+        <app-icon name="download" [size]="16" /> Résumé
+      </a>
+
+      <button
+        type="button"
+        class="nav__icon-btn nav__burger"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <app-icon [name]="menuOpen() ? 'close' : 'menu'" [size]="20" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Reading progress ------------------------------------------------- -->
+  <div class="nav__progress" aria-hidden="true">
+    <span class="nav__progress-bar" [style.transform]="'scaleX(' + progress() + ')'"></span>
+  </div>
+
+  <div class="nav__mobile" [class.is-open]="menuOpen()">
+    @for (link of links; track link.id) {
+      <a
+        [href]="link.id"
+  class="nav__mobile-link"
+  [class.is-active]="spy.activeId() === link.id"
+  (click)="scrollTo(link.id, $event); closeMenu()"
+>{{ link.label }}</a>
+    }
+    <a class="btn btn-primary nav__mobile-resume" [href]="data.resumeUrl" download (click)="closeMenu()">
+      <app-icon name="download" [size]="16" /> Download résumé
+    </a>
+  </div>
+</header>

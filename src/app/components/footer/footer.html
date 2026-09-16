@@ -1,0 +1,34 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__cta">
+      <div>
+        <h2 class="footer__cta-title">Ready when you are.</h2>
+        <p class="footer__cta-text">
+          Open to Software Developer roles and freelance work — let's talk.
+        </p>
+      </div>
+      <a [href]="'mailto:' + data.email" class="btn btn-primary">
+        <app-icon name="mail" [size]="16" /> {{ data.email }}
+      </a>
+    </div>
+
+    <div class="footer__inner">
+      <p class="footer__text">
+        © {{ year }} {{ data.name }} · Built with Angular &amp; TypeScript
+      </p>
+
+      <div class="footer__socials">
+        @for (social of data.socials; track social.label) {
+          <a
+            [href]="social.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="social.label"
+          >
+            <app-icon [name]="social.icon" [size]="17" />
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</footer>
