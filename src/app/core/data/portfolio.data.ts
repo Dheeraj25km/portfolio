@@ -18,7 +18,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     trail: 'products for the web.',
   },
   tagline:
-    'Software Developer focused on responsive, scalable applications with Angular, React and .NET — shipping clean, production-ready code in Agile teams.',
+    'Software Developer focused on responsive, scalable applications with Angular, PHP and .NET — shipping clean, production-ready code in Agile teams.',
   location: 'Bengaluru, Karnataka, India',
   email: 'dheeraj25122002@gmail.com',
   phone: '+91-7296030779',
