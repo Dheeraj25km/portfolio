@@ -18,7 +18,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     trail: 'products for the web.',
   },
   tagline:
-    'Software Developer focused on responsive, scalable applications with Angular, PHP and .NET — shipping clean, production-ready code in Agile teams.',
+    'Software Developer focused on responsive, scalable applications with Angular, PHP, Nodejs and .NET — shipping clean, production-ready code in Agile teams.',
   location: 'Bengaluru, Karnataka, India',
   email: 'dheeraj25122002@gmail.com',
   phone: '+91-7296030779',
@@ -29,17 +29,18 @@ export const PORTFOLIO_DATA: PortfolioData = {
     alt: 'Portrait of Dheeraj Kumar Singh',
   },
   summary:
-    'Software Developer with experience building responsive, scalable full-stack web applications using Angular, React.js, Node.js, and .NET. Skilled in API development, cloud fundamentals (AWS), testing, debugging, and bug fixing, with a strong foundation in Java and Data Structures and Algorithms (DSA). Proven problem-solver contributing to high-quality software delivery in Agile, collaborative teams.',
+    'Software Developer with experience building responsive, scalable full-stack web applications using Angular, PHP, Node.js, and .NET. Skilled in API development, cloud fundamentals (AWS), testing, debugging, and bug fixing, with a strong foundation in Java and Data Structures and Algorithms (DSA). Proven problem-solver contributing to high-quality software delivery in Agile, collaborative teams.',
   marquee: [
     'Angular',
     'TypeScript',
+    'PHP',
     'React.js',
     '.NET',
     'C#',
     'Node.js',
     'Express.js',
     'MongoDB',
-    'SQL',
+    'MySQL',
     'REST APIs',
     'AWS',
     'Java',
@@ -47,6 +48,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
     'Angular Material',
     'DevExtreme',
     'Git',
+    'Github',
     'Testing',
   ],
   socials: [
