@@ -29,7 +29,7 @@ export class About implements OnInit, OnDestroy {
   name: "${PORTFOLIO_DATA.name}",
   role: "${PORTFOLIO_DATA.role}",
   based: "Bengaluru, India",
-  stack: ["Angular", "TypeScript", ".NET", "Node.js"],
+  stack: ["Angular", "TypeScript", ".NET", "PHP"],
   focus: "clean, scalable, production-ready code",
   status: "open to opportunities",
 };`;
