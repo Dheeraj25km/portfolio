@@ -72,7 +72,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
         'Collaborate with cross-functional teams to design, develop, and deploy new features and enhancements to existing applications.',
         'Maintain and optimize existing codebases, identify and resolve bugs, and improve overall application stability and performance.',
       ],
-      stack: ['Angular', 'PHP', 'TypeScript','C#', '.NET Framework', 'REST APIs', 'Git'],
+      stack: ['Angular', 'PHP', 'TypeScript','C#', '.NET', 'MySql', 'REST APIs', 'Git'],
     },
     {
       role: 'SDE Trainee, Software Developer',
@@ -87,7 +87,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
         'Contributed to backend development using C# and .NET Framework, implementing APIs, data validation, and scalable data processing workflows.',
         'Performed unit testing, debugging, and bug fixing; collaborated with QA in an Agile environment across sprint planning, stand-ups, and code reviews.',
       ],
-      stack: ['Angular', 'C#', '.NET Framework', 'Angular Material', 'DevExtreme'],
+      stack: ['Angular', 'C#', '.NET Framework', 'Angular Material', 'MySQL', 'DevExtreme', 'Github'],
     },
   ],
   projects: [
@@ -172,7 +172,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       label: 'Languages',
       icon: 'code',
       blurb: 'Typed, object-oriented foundations I write production code in every day.',
-      items: ['Java', 'JavaScript', 'TypeScript', 'C#'],
+      items: ['Java', 'JavaScript', 'TypeScript', 'C#', 'PHP'],
     },
     {
       label: 'Frontend',
@@ -193,7 +193,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
       label: 'Backend & Data',
       icon: 'server',
       blurb: 'REST API design, validation, and both relational and document stores.',
-      items: ['.NET', 'Node.js', 'Express.js', 'REST APIs', 'MongoDB', 'SQL'],
+      items: ['.NET', 'Node.js', 'Express.js', 'REST APIs','MySql', 'MongoDB', 'SQL'],
     },
     {
       label: 'Cloud & Tools',
