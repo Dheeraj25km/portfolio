@@ -72,7 +72,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
         'Collaborate with cross-functional teams to design, develop, and deploy new features and enhancements to existing applications.',
         'Maintain and optimize existing codebases, identify and resolve bugs, and improve overall application stability and performance.',
       ],
-      stack: ['Angular', 'TypeScript', 'REST APIs', 'Git'],
+      stack: ['Angular', 'PHP', 'TypeScript','C#', '.NET Framework', 'REST APIs', 'Git'],
     },
     {
       role: 'SDE Trainee, Software Developer',
