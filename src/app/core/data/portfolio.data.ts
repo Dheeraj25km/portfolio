@@ -22,7 +22,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   location: 'Bengaluru, Karnataka, India',
   email: 'dheeraj25122002@gmail.com',
   phone: '+91-7296030779',
-  resumeUrl: 'assets/resume/Dheeraj_Kumar_Singh_Resume.pdf',
+  resumeUrl: 'assets/resume/Dheeraj-Kr-Resume.pdf',
   availability: 'Open to new opportunities',
   profile: {
     src: 'assets/img/profile.png',
